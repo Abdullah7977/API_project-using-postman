@@ -1,0 +1,361 @@
+{
+	"info": {
+		"_postman_id": "f9d5e6d7-6a93-4856-a5af-b1dfc1c071b3",
+		"name": "bosta_collection with more request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24205120"
+	},
+	"item": [
+		{
+			"name": "request without tracking number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/shipments/track",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipments",
+						"track"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request with track-number(6636234)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check responseTime is below 100\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check currentstatus is deliverd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CurrentStatus.state).to.eql(\"DELIVERED\");\r",
+							"});\r",
+							"pm.test(\"Check the tracking Number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingNumber).to.eql(\"6636234\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-Requested-By",
+						"value": "l",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "{{url}}/shipments/track/{{trackingNumber1}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipments",
+						"track",
+						"{{trackingNumber1}}"
+					],
+					"query": [
+						{
+							"key": "",
+							"value": "",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request with track_number(7234258)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check responseTime is below 100\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check currentstatus is deliverd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CurrentStatus.state).to.eql(\"DELIVERED\");\r",
+							"});\r",
+							"pm.test(\"Check the tracking Number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingNumber).to.eql(\"7234258\");\r",
+							"});\r",
+							"pm.test(\"Check the TrackingURL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingURL).to.eql(\"bosta.co/tracking-shipment/?track_num=7234258\");\r",
+							"});\r",
+							"pm.test(\"Check the SupportPhoneNumbers\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.SupportPhoneNumbers[0]).to.eql(\"19043\");\r",
+							"});\r",
+							"pm.test(\"Check the CreateDate\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CreateDate).to.eql(\"2020-07-20T16:34:55.150Z\");\r",
+							"});\r",
+							"pm.test(\"Check the TransitEvents\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TransitEvents[0].state).to.eql(\"TICKET_CREATED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/shipments/track/{{trackingNumber2}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipments",
+						"track",
+						"{{trackingNumber2}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request with track_number(9442984)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check responseTime is below 100\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check currentstatus is deliverd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CurrentStatus.state).to.eql(\"DELIVERED_TO_SENDER\");\r",
+							"});\r",
+							"pm.test(\"Check the tracking Number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingNumber).to.eql(\"9442984\");\r",
+							"});\r",
+							"pm.test(\"Check the TrackingURL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingURL).to.eql(\"bosta.co/tracking-shipment/?track_num=9442984\");\r",
+							"});\r",
+							"pm.test(\"Check the SupportPhoneNumbers\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.SupportPhoneNumbers[0]).to.eql(\"19043\");\r",
+							"});\r",
+							"pm.test(\"Check the CreateDate\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CreateDate).to.eql(\"2020-07-20T10:18:20.824Z\");\r",
+							"});\r",
+							"pm.test(\"Check the TransitEvents\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TransitEvents[0].state).to.eql(\"TICKET_CREATED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/shipments/track/{{trackingNumber3}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipments",
+						"track",
+						"{{trackingNumber3}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "request with track_number(1094442)",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check responseTime is below 100\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+							"});\r",
+							"\r",
+							"\r",
+							"pm.test(\"Check currentstatus is deliverd\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CurrentStatus.state).to.eql(\"DELIVERED\");\r",
+							"});\r",
+							"pm.test(\"Check the tracking Number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingNumber).to.eql(\"1094442\");\r",
+							"});\r",
+							"pm.test(\"Check the TrackingURL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TrackingURL).to.eql(\"bosta.co/tracking-shipment/?track_num=1094442\");\r",
+							"});\r",
+							"pm.test(\"Check the SupportPhoneNumbers\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.SupportPhoneNumbers[0]).to.eql(\"19043\");\r",
+							"});\r",
+							"pm.test(\"Check the CreateDate\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.CreateDate).to.eql(\"2020-07-21T17:37:31.147Z\");\r",
+							"});\r",
+							"pm.test(\"Check the TransitEvents\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TransitEvents[0].state).to.eql(\"TICKET_CREATED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/shipments/track/{{trackingNumber4}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipments",
+						"track",
+						"{{trackingNumber4}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "trackingNumber1",
+			"value": "6636234",
+			"type": "string"
+		},
+		{
+			"key": "trackingNumber2",
+			"value": "7234258",
+			"type": "string"
+		},
+		{
+			"key": "trackingNumber3",
+			"value": "9442984",
+			"type": "string"
+		},
+		{
+			"key": "trackingNumber4",
+			"value": "1094442",
+			"type": "string"
+		}
+	]
+}

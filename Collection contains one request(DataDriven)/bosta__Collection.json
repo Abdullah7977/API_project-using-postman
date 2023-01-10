@@ -1,0 +1,102 @@
+{
+	"info": {
+		"_postman_id": "3c8d327c-b351-4eb6-8e39-fac8a4102895",
+		"name": "bosta_collection_with_one_request",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24205120"
+	},
+	"item": [
+		{
+			"name": "request to use all tracking_number",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Check status is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check responseTime is below 100\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(100);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the tracking Number\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var tracking_number=jsonData.TrackingNumber\r",
+							"    pm.expect(jsonData.TrackingNumber).to.eql(tracking_number);\r",
+							"});\r",
+							"pm.test(\"Check the TrackingURL\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var tracking_url=jsonData.TrackingURL\r",
+							"    pm.expect(jsonData.TrackingURL).to.eql(tracking_url);\r",
+							"});\r",
+							"pm.test(\"Check the SupportPhoneNumbers\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.SupportPhoneNumbers[0]).to.eql(\"19043\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check the TransitEvents\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.TransitEvents[0].state).to.eql(\"TICKET_CREATED\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/shipments/track/{{trackingNumber}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"shipments",
+						"track",
+						"{{trackingNumber}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "trackingNumber",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
